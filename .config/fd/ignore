@@ -1,4 +1,4 @@
-*cache
+*[cC]ache
 cached/
 Code Cache/
 
@@ -9,7 +9,10 @@ go/pkg/
 **/.git/
 
 .icons/
+.vscode/
 .steam/
 **/Steam/
 **/mason/packages/
 **/WeChat_Data/
+Pictures/
+Library/
