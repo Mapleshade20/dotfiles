@@ -17,6 +17,7 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export YADM_ROOT="$HOME"
 
 export EDITOR="nvim"
 export FD="fd"
@@ -28,6 +29,7 @@ export PATH="$PATH:$GOPATH/bin"
 # Aliases Mutable
 alias g++="g++ -std=c++11"
 alias spice="spicetify backup apply"
+alias dot='lazygit --use-config-file "$XDG_CONFIG_HOME/yadm/lazygit.yml" --work-tree "$YADM_ROOT" --git-dir $XDG_DATA_HOME/yadm/repo.git'
 
 # Aliases Immutable
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
