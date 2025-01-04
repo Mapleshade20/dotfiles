@@ -1,0 +1,15 @@
+*cache
+cached/
+Code Cache/
+
+go/pkg/
+**/mamba/pkgs/
+.cargo/
+
+**/.git/
+
+.icons/
+.steam/
+**/Steam/
+**/mason/packages/
+**/WeChat_Data/

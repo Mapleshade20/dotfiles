@@ -1,0 +1,69 @@
+# Put files in this folder to add your own custom functionality.
+# See: https://github.com/ohmyzsh/ohmyzsh/wiki/Customization
+#
+# Files in the custom/ directory will be:
+# - loaded automatically by the init script, in alphabetical order
+# - loaded last, after all built-ins in the lib/ directory, to override them
+# - ignored by git by default
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export GOPATH="$XDG_DATA_HOME/go"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
+export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+
+export EDITOR="nvim"
+export FD="fd"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+
+export PATH="$PATH:$GOPATH/bin"
+
+# Aliases Mutable
+alias g++="g++ -std=c++11"
+alias spice="spicetify backup apply"
+
+# Aliases Immutable
+alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
+alias zshconfig="nvim ~/.config/zsh_custom/custom.zsh##template"
+# alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias ll="ls -al"
+alias cd="z"  # zoxide
+alias vim="nvim"
+alias vi="nvim"
+alias lg="lazygit"
+
+# Yazi file browser
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+{% if yadm.os == "Darwin" %}
+
+export HOMEBREW_AUTO_UPDATE_SECS=2629746
+export MANPAGER="nvim +Man!"
+
+{% else %}
+
+alias ondae="sudo systemctl start dae"
+alias offdae="sudo systemctl stop dae"
+alias confdae="sudo nvim /etc/dae/config.dae"
+alias logdae="tail -f /var/log/dae.log | perl -pe 's/(_qname=|dialer=|network=)/\e[1;34m$&\e[0m/g; s/(reject)/\e[1;31m$&\e[0m/g; s/(mac="ac:74:b1:18:78:79")/\e[1;32m$&\e[0m/g; s/(ip=|sniffed=)/\e[1;33m$&\e[0m/g; s/(qtype=)/\e[1;35m$&\e[0m/g'"
+
+{% endif %}
+
+# Programs Initialization -- this should be in .zshrc
+# eval "$(starship init zsh)"
+# source <(fzf --zsh)
+# eval "$(zoxide init zsh)"
