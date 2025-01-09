@@ -1,5 +1,12 @@
 return {
   "zbirenbaum/copilot.lua",
+  keys = {
+    {
+      "<leader>up",
+      "<cmd>Copilot toggle<cr>",
+      desc = "Toggle Copilot",
+    },
+  },
   specs = {
     {
       "zbirenbaum/copilot.lua",
@@ -9,6 +16,7 @@ return {
         suggestion = { auto_trigger = true, debounce = 150 },
         filetypes = {
           html = false,
+          css = false,
         },
       },
     },

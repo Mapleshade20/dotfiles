@@ -1,10 +1,13 @@
 return {
   "CRAG666/code_runner.nvim",
+  config = true,
   cmd = "RunCode",
   keys = {
+
+    { "<Leader>r", "", desc = " Execute" },
     {
       "<leader>rr",
-      "<cmd>RunCode<cr>",
+      "<cmd>RunFile<cr>",
       desc = "Run Current",
     },
     {
@@ -32,11 +35,13 @@ return {
   },
   opts = {
     mode = "toggleterm",
-    focus = false,
+    focus = true,
+    startinsert = true,
     filetype = {
-      python = "python -u",
+      python = "python3 -u",
+      typescript = "deno run",
       go = { "cd $dir ;", "go mod tidy;", "go run ." },
-      cpp = { "cd $dir ;", "g++-11 -o %:t:r.bin %:t ;", "./%:t:r.bin" },
+      cpp = { "cd $dir ;", "g++-11 -o /tmp/%:t:r %:t ;", "/tmp/%:t:r ;", "rm /tmp/%:t:r" },
     },
   },
 }
