@@ -91,13 +91,26 @@ return {
 
   {
     "linux-cultist/venv-selector.nvim",
-    config = true,
-    opts = {
-      anaconda_base_path = "~/mamba",
-      anaconda_envs_path = "~/mamba/envs",
-      enable_debug_output = true,
-      auto_refresh = true,
+    branch = "regexp",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "mfussenegger/nvim-dap",
+      "nvim-telescope/telescope.nvim",
     },
+    config = function()
+      require("venv-selector").setup {
+        settings = {
+          options = {
+            debug = true,
+          },
+          search = {
+            mamba = {
+              command = "fd 'bin/python$' $MAMBA_ROOT_PREFIX/envs --full-path --color never",
+            },
+          },
+        },
+      }
+    end,
   },
 
   -- == Overriding Default Plugins ==

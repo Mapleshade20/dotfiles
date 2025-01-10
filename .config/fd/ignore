@@ -2,10 +2,6 @@
 cached/
 Code Cache/
 
-go/pkg/
-**/mamba/pkgs/
-.cargo/
-
 **/.git/
 
 .icons/

@@ -22,7 +22,7 @@ export YADM_ROOT="$HOME"
 
 export EDITOR="nvim"
 export FD="fd"
-export FZF_DEFAULT_COMMAND='fd --type f --hidden'
+export FZF_DEFAULT_COMMAND="fd --type f --hidden -E '**/go/pkg/' -E '**/mamba/pkgs/' -E '.cargo/'"
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 
 export PATH="$PATH:$GOPATH/bin"
