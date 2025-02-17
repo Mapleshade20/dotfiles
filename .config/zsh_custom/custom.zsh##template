@@ -52,6 +52,13 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# Dig
+digall() {
+	dig "$1" A
+	dig "$1" AAAA
+}
+
+
 {% if yadm.os == "Darwin" %}
 
 export HOMEBREW_AUTO_UPDATE_SECS=2629746
