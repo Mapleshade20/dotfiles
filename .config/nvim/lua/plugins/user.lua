@@ -90,6 +90,10 @@ return {
   },
 
   {
+    "brianhuster/live-preview.nvim",
+  },
+
+  {
     "linux-cultist/venv-selector.nvim",
     branch = "regexp",
     dependencies = {
