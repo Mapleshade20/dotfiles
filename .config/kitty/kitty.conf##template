@@ -22,7 +22,7 @@ hide_window_decorations   titlebar-only
 tab_bar_edge          top
 tab_bar_style         powerline
 tab_powerline_style   slanted
-background_opacity    0.75
+background_opacity    0.8
 background_blur       40
 macos_option_as_alt   yes
 
@@ -38,16 +38,18 @@ cursor_shape_unfocused        hollow
 
 enable_audio_bell no
 
-font_family      JetBrains Mono
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
+# font_family      JetBrains Mono
+# bold_font        auto
+# italic_font      auto
+# bold_italic_font auto
 
-# font_family        Maple Mono ExtraLight
-# bold_font          Maple Mono SemiBold
-# italic_font        Maple Mono ExtraLight Italic
-# bold_italic_font   Maple Mono SemiBold Italic
+font_family        Maple Mono Light
+bold_font          Maple Mono Bold
+italic_font        Maple Mono Light Italic
+bold_italic_font   Maple Mono SemiBold Italic
 # font_features      MapleMono-ExtraLightItalic +cv35
+modify_font cell_width 97%
+modify_font cell_height 108%
 
 #: To get the PostScript name, use `kitty +list-fonts --psnames`
 #: The part in brackets is the PostScript name.
