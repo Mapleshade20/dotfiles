@@ -30,6 +30,7 @@ alias dot='lazygit --use-config-file "$XDG_CONFIG_HOME/yadm/lazygit.yml" --work-
 # Aliases Immutable
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 alias zshconfig="nvim ~/.config/zsh_custom/custom.zsh##template"
+alias kittyconfig="nvim ~/.config/kitty/kitty.conf##template"
 # alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias ll="ls -al"
 alias cd="z"  # zoxide
