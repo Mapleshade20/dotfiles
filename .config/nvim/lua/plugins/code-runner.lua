@@ -6,13 +6,13 @@ return {
 
     { "<Leader>r", "", desc = " Execute" },
     {
-      "<leader>rr",
+      "<Leader>rr",
       "<cmd>RunFile<cr>",
       desc = "Run Current",
     },
     {
       -- Modify this section to detect between Go and C++
-      "<leader>rb",
+      "<Leader>rb",
       function()
         -- Get the file extension of the current buffer
         local file_ext = vim.fn.expand "%:e"

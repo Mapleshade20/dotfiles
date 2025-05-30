@@ -1,8 +1,80 @@
 -- You can also add or configure plugins by creating files in this `plugins/` folder
--- Here are some examples:
 
 ---@type LazySpec
 return {
+
+  -- == Adding Plugins ==
+
+  {
+    "dnlhc/glance.nvim",
+    cmd = "Glance",
+    keys = {
+      {
+        "gD",
+        "<CMD>Glance definitions<CR>",
+        desc = "Glance Definitions",
+      },
+      {
+        "gR",
+        "<CMD>Glance references<CR>",
+        desc = "Glance References",
+      },
+      {
+        "gY",
+        "<CMD>Glance type_definitions<CR>",
+        desc = "Glance Type Definitions",
+      },
+      {
+        "gM",
+        "<CMD>Glance implementations<CR>",
+        desc = "Glance Implementations",
+      },
+    },
+  },
+
+  {
+    "karb94/neoscroll.nvim",
+    config = true,
+    opts = {},
+  },
+
+  {
+    "gbprod/cutlass.nvim",
+    event = "BufEnter",
+    config = true,
+    opts = {
+      cut_key = "m",
+    },
+  },
+
+  {
+    "kylechui/nvim-surround",
+    event = "BufEnter",
+    config = true,
+  },
+
+  -- Auto-tagging HTML/XML tags
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    config = true,
+  },
+
+  {
+    "brianhuster/live-preview.nvim",
+    lazy = true,
+  },
+
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
+    event = "InsertEnter",
+    version = "v2.*",
+    build = "make install_jsregexp",
+    config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
+  },
 
   {
     "catppuccin/nvim",
@@ -15,10 +87,6 @@ return {
         transparent_background = true, -- disables setting background color.
         color_overrides = {
           mocha = {
-            rosewater = "#f5e0dc",
-            flamingo = "#f2cdcd",
-            pink = "#f5c2e7",
-            mauve = "#DD97F1",
             red = "#FF838B",
             maroon = "#FF838B",
             peach = "#DFAB25",
@@ -43,6 +111,53 @@ return {
             crust = "#1A1D23",
           },
         },
+        custom_highlights = function(colors)
+          return {
+            -- VSCode风格的高亮
+            ["@keyword"] = { fg = "#569CD6" },
+            ["@keyword.function"] = { fg = "#569CD6" },
+            ["@keyword.return"] = { fg = "#569CD6" },
+            ["@keyword.operator"] = { fg = "#569CD6" },
+
+            -- C++特定关键词样式
+            ["@keyword.cpp"] = { fg = "#569CD6" },
+            ["@type.builtin.cpp"] = { fg = "#569CD6" },
+            ["@type.qualifier.cpp"] = { fg = "#569CD6" },
+            ["@storage.class.cpp"] = { fg = "#569CD6" },
+            ["@storage.modifier.cpp"] = { fg = "#569CD6" },
+
+            -- 类关键词和访问修饰符
+            ["@module"] = { fg = "#4EC9B0" }, -- 类型名称为青色
+            ["@type"] = { fg = "#4EC9B0" },
+            ["@type.builtin"] = { fg = "#569CD6" },
+            ["@type.qualifier"] = { fg = "#569CD6" },
+            ["@type.definition"] = { fg = "#4EC9B0" },
+
+            -- 函数和方法调用
+            ["@function"] = { fg = "#DCDCAA" },
+            ["@function.call"] = { fg = "#DCDCAA" },
+            ["@function.method"] = { fg = "#DCDCAA" },
+            ["@function.method.call"] = { fg = "#DCDCAA" },
+            ["@function.builtin"] = { fg = "#DCDCAA" },
+            ["@function.macro"] = { fg = "#DCDCAA" },
+
+            -- 变量和成员
+            ["@variable"] = { fg = "#A5DFFE" },
+            ["@variable.member"] = { fg = "#A5DFFE" },
+            ["@property"] = { fg = "#A5DFFE" },
+
+            -- 字符串和常量
+            ["@string"] = { fg = "#CE9178" },
+            ["@number"] = { fg = "#B5CEA8" },
+            ["@boolean"] = { fg = "#569CD6" },
+
+            -- 注释
+            ["@comment"] = { fg = "#597F49", style = { "italic" } },
+
+            -- 符号
+            ["@punctuation.bracket"] = { fg = "#C98ADB" },
+          }
+        end,
         default_integrations = true,
         integrations = {
           cmp = true,
@@ -62,69 +177,26 @@ return {
     end,
   },
 
-  {
-    "karb94/neoscroll.nvim",
-    config = true,
-    opts = {},
-  },
+  -- == Overriding Plugins ==
 
+  -- customize dashboard options
   {
-    "gbprod/cutlass.nvim",
-    event = "BufEnter",
-    config = true,
+    "folke/snacks.nvim",
     opts = {
-      cut_key = "m",
-    },
-  },
-
-  {
-    "kylechui/nvim-surround",
-    event = "BufEnter",
-    config = true,
-  },
-
-  {
-    "windwp/nvim-ts-autotag",
-    event = "BufEnter",
-    config = true,
-  },
-
-  {
-    "brianhuster/live-preview.nvim",
-  },
-
-  {
-    "linux-cultist/venv-selector.nvim",
-    branch = "regexp",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "mfussenegger/nvim-dap",
-      "nvim-telescope/telescope.nvim",
-    },
-    config = function()
-      require("venv-selector").setup {
-        settings = {
-          options = {
-            debug = true,
-          },
-          search = {
-            mamba = {
-              command = "fd 'bin/python$' $MAMBA_ROOT_PREFIX/envs --full-path --color never",
-            },
-          },
+      dashboard = {
+        preset = {
+          header = table.concat({
+            "       ████ ██████           █████      ██                    ",
+            "      ███████████             █████                            ",
+            "      █████████ ███████████████████ ███   ███████████  ",
+            "     █████████  ███    █████████████ █████ ██████████████  ",
+            "    █████████ ██████████ █████████ █████ █████ ████ █████  ",
+            "  ███████████ ███    ███ █████████ █████ █████ ████ █████ ",
+            " ██████  █████████████████████ ████ █████ █████ ████ ██████",
+          }, "\n"),
         },
-      }
-    end,
-  },
-
-  -- == Overriding Default Plugins ==
-
-  {
-    "L3MON4D3/LuaSnip",
-    config = function()
-      local config_path = "~/.config/nvim/lua/plugins/LuaSnip/"
-      require("luasnip.loaders.from_lua").lazy_load { paths = { config_path } } -- WARNING: fails on Windows
-    end,
+      },
+    },
   },
 
   {
@@ -150,36 +222,13 @@ return {
     },
   },
 
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      -- fps = 60,
-      -- background_colour = "NONE",
-      render = "compact",
-      stages = "static",
-    },
-  },
-
-  {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        "       ████ ██████           █████      ██",
-        "      ███████████             █████ ",
-        "      █████████ ███████████████████ ███   ███████████",
-        "     █████████  ███    █████████████ █████ ██████████████",
-        "    █████████ ██████████ █████████ █████ █████ ████ █████",
-        "  ███████████ ███    ███ █████████ █████ █████ ████ █████",
-        " ██████  █████████████████████ ████ █████ █████ ████ ██████",
-      }
-      return opts
-    end,
-  },
-
-  -- You can disable default plugins as follows:
-  --{ "max397574/better-escape.nvim", enabled = false },
-  -- { "nmac427/guess-indent.nvim", enabled = false },
-
-  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   opts = {
+  --     -- fps = 60,
+  --     -- background_colour = "NONE",
+  --     render = "compact",
+  --     stages = "static",
+  --   },
+  -- },
 }

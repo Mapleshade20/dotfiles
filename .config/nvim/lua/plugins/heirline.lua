@@ -43,7 +43,7 @@ return {
       status.component.fill(),
       status.component.cmd_info(),
       status.component.fill(),
-      status.component.lsp(),
+      -- status.component.lsp(),
       status.component.virtual_env(),
       status.component.nav(),
     }
