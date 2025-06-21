@@ -20,7 +20,10 @@ return {
         -- Check if it's a Go file
         if file_ext == "go" then
           vim.cmd "!go mod tidy && go build ."
-
+        -- Check if it's a Rust file
+        elseif file_ext == "rs" then
+          vim.cmd "!cargo build"
+          print "Rust cargo built in debug mode"
         -- Check if it's a C++ file
         elseif file_ext == "cpp" then
           -- Compile and build the C++ file in debug mode
@@ -41,7 +44,8 @@ return {
       python = "python3 -u",
       typescript = "deno run",
       go = { "cd $dir ;", "go mod tidy;", "go run ." },
-      cpp = { "cd $dir ;", "g++-11 -o /tmp/%:t:r %:t ;", "/tmp/%:t:r ;", "rm /tmp/%:t:r" },
+      cpp = { "g++-11 -o /tmp/%:t:r $dir/%:t ;", "/tmp/%:t:r" },
+      rust = { "cargo run$end" },
     },
   },
 }
