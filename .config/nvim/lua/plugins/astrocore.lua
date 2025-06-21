@@ -13,14 +13,17 @@ return {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
+      diagnostics = true, -- diagnostic settings on startup
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
+      inlay_hints = false, -- enable inlay hints globally on startup
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
       virtual_text = true,
+      virtual_lines = { current_line = true },
       underline = true,
+      update_in_insert = false,
     },
     -- passed to `vim.filetype.add`
     filetypes = {
@@ -56,6 +59,7 @@ return {
       -- first key is the mode
       n = {
         -- second key is the lefthand side of the map
+        ["<C-i>"] = { "<C-a>", desc = "Increase number" },
 
         -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
@@ -80,6 +84,10 @@ return {
 
         -- Maple Custom
         ["<Leader>fd"] = { ":cd %:p:h<CR>:pwd<CR>", desc = "Change dir" },
+      },
+
+      v = {
+        ["<C-i>"] = { "<C-a>", desc = "Increase number" },
       },
     },
   },
