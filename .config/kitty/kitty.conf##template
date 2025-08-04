@@ -16,7 +16,7 @@ window_padding_width 14
 {% else %}
 
 # Darwin
-font_size   17.0
+font_size   16.0
 window_padding_width      3
 hide_window_decorations   titlebar-only
 tab_bar_edge          top

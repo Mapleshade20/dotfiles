@@ -46,6 +46,7 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = true, -- sets vim.opt.wrap
+        laststatus = 3,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -80,7 +81,7 @@ return {
         -- ["<Leader>b"] = { desc = "Buffers" },
 
         -- setting a mapping to false will disable it
-        -- ["<C-S>"] = false,
+        -- ["gD"] = false,
 
         -- Maple Custom
         ["<Leader>fd"] = { ":cd %:p:h<CR>:pwd<CR>", desc = "Change dir" },
