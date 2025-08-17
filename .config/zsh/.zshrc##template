@@ -3,7 +3,7 @@
 {% if yadm.hostname == "turbostar" %}
 {% else %}
 
-stty erase ^H
+stty erase 
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -29,6 +29,12 @@ alias lg="lazygit"
 alias c="clear" 
 alias fastfetch='fastfetch --logo-type kitty'
 alias mkdir='mkdir -p'
+
+alias l='eza -lh --icons=auto'                                         # long list
+alias ls='eza -1 --icons=auto'                                         # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto'                                       # long list dirs
+alias lt='eza --icons=auto --tree'                                     # list folder as tree
 
 # Directory navigation shortcuts
 alias ..='cd ..'
@@ -67,11 +73,6 @@ digall() {
 # Different config for different hosts
 {% if yadm.hostname == "turbostar" %}
 
-alias l='eza -lh --icons=auto'                                         # long list
-alias ls='eza -1 --icons=auto'                                         # short list
-alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias ld='eza -lhD --icons=auto'                                       # long list dirs
-alias lt='eza --icons=auto --tree'                                     # list folder as tree
 alias ondae="sudo systemctl start dae"
 alias offdae="sudo systemctl stop dae"
 alias confdae="sudo nvim /etc/dae/config.dae"
