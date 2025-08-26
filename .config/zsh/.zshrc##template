@@ -76,7 +76,7 @@ digall() {
 alias ondae="sudo systemctl start dae"
 alias offdae="sudo systemctl stop dae"
 alias confdae="sudo nvim /etc/dae/config.dae"
-alias logdae="tail -f /var/log/dae.log | perl -pe 's/(_qname=|dialer=|network=)/\e[1;34m$&\e[0m/g; s/(reject)/\e[1;31m$&\e[0m/g; s/(mac="ac:74:b1:18:78:79")/\e[1;32m$&\e[0m/g; s/(ip=|sniffed=)/\e[1;33m$&\e[0m/g; s/(qtype=)/\e[1;35m$&\e[0m/g'"
+alias logdae="sudo tail -f /var/log/dae.log | perl -pe 's/(_qname=|dialer=|network=)/\e[1;34m$&\e[0m/g; s/(reject)/\e[1;31m$&\e[0m/g; s/(mac="ac:74:b1:18:78:79")/\e[1;32m$&\e[0m/g; s/(ip=|sniffed=)/\e[1;33m$&\e[0m/g; s/(qtype=)/\e[1;35m$&\e[0m/g'"
 
 {% else %}
 
