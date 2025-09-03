@@ -50,6 +50,8 @@ alias dot='lazygit --use-config-file "$XDG_CONFIG_HOME/yadm/lazygit.yml" --work-
 # Environment Variables
 export FZF_DEFAULT_COMMAND="fd --type f --max-depth 10 --hidden -E '**/go/pkg/' -E '**/mamba/pkgs/' -E '.cargo/'"
 export HOMEBREW_AUTO_UPDATE_SECS=2629746
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
+export DENO_INSTALL_ROOT="$HOME/.local/bin"
 
 # Load custom zsh configuration
 eval "$(zoxide init zsh)"
