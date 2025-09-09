@@ -10,9 +10,12 @@ return {
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.biome" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
-  { import = "astrocommunity.recipes.neovide" },
+  -- { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
 }

@@ -11,12 +11,12 @@ return {
       ensure_installed = {
         -- install language servers
         "lua-language-server",
-        "html-lsp",
-        "css-lsp",
+        -- "html-lsp",
+        -- "css-lsp",
 
         -- install formatters
         "stylua",
-        "prettier",
+        -- "prettier",
 
         -- install debuggers
         "debugpy",
