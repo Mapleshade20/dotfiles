@@ -10,6 +10,8 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export _JAVA_OPTIONS=-Djavafx.cachedir="$XDG_CACHE_HOME/openjfx"
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 
+export ZSH="$ZDOTDIR/oh-my-zsh"
+
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
