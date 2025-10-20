@@ -27,7 +27,7 @@ return {
         -- Check if it's a C++ file
         elseif file_ext == "cpp" then
           -- Compile and build the C++ file in debug mode
-          vim.cmd "!cd '%:h' && g++-11 -g -o '%:t:r.debug.bin' '%:t'"
+          vim.cmd "!cd $dir && g++ -std=c++14 -g -o $fileNameWithoutExt.debug.bin $fileName"
           print "C++ file built in debug mode"
         else
           print "Unsupported file type for building"
@@ -57,7 +57,7 @@ return {
       python = "python3 -u",
       typescript = "deno run",
       go = { "cd $dir ;", "go mod tidy;", "go run ." },
-      cpp = { "g++-11 -o /tmp/%:t:r $dir/%:t ;", "/tmp/%:t:r" },
+      cpp = { "g++ -std=c++14 -o /tmp/$fileNameWithoutExt $dir/$fileName &&", "/tmp/$fileNameWithoutExt" },
       rust = { "cargo run$end" },
     },
   },
