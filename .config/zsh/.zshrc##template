@@ -60,6 +60,7 @@ export HOMEBREW_AUTO_UPDATE_SECS=2629746
 export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
 export DENO_INSTALL_ROOT="$XDG_DATA_HOME/deno/bin"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
 export PATH="$XDG_DATA_HOME/npm/bin:$XDG_DATA_HOME/deno/bin:$PATH"
 
 # Load custom zsh configuration
