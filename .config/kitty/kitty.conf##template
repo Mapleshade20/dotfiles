@@ -4,14 +4,12 @@
 {% if yadm.os == "Linux" %}
 
 {% if yadm.hostname == "turbostar" %}
-
 # 3090 hyprland
 include hyde.conf
-
 {% endif %}
 
-font_size 11.0
-window_padding_width 14
+font_size 9.0
+window_padding_width 10
 
 {% else %}
 
@@ -29,7 +27,6 @@ macos_option_as_alt   yes
 include darwin-theme.conf
 
 {% endif %}
-
 
 cursor_trail                  3
 cursor_trail_start_threshold  -1
