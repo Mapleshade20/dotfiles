@@ -20,10 +20,11 @@ return {
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
-      virtual_text = true,
-      virtual_lines = { current_line = true },
+      virtual_text = false,
+      virtual_lines = false,
       underline = true,
       update_in_insert = false,
+      severity_sort = true,
     },
     -- passed to `vim.filetype.add`
     filetypes = {
@@ -41,7 +42,7 @@ return {
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
-        relativenumber = true, -- sets vim.opt.relativenumber
+        relativenumber = false, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
@@ -64,7 +65,7 @@ return {
       -- first key is the mode
       n = {
         -- second key is the lefthand side of the map
-        ["<C-i>"] = { "<C-a>", desc = "Increase number" },
+        -- ["<C-i>"] = { "<C-a>", desc = "Increase number" },
 
         -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
@@ -89,10 +90,6 @@ return {
 
         -- Maple Custom
         ["<Leader>fd"] = { ":cd %:p:h<CR>:pwd<CR>", desc = "Change dir" },
-      },
-
-      v = {
-        ["<C-i>"] = { "<C-a>", desc = "Increase number" },
       },
     },
   },

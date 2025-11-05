@@ -4,6 +4,27 @@
 return {
 
   -- == Adding Plugins ==
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "astronvim/astrocore",
+      opts = {
+        diagnostics = {
+          -- Disable diagnostics virtual text to prevent duplicates
+          virtual_text = false,
+          virtual_lines = false,
+        },
+      },
+    },
+    opts = {
+      options = {
+        multilines = {
+          enabled = true,
+        },
+      },
+    },
+  },
 
   {
     "dnlhc/glance.nvim",
@@ -253,14 +274,4 @@ return {
       enable_update_available_warning = false,
     },
   },
-
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   opts = {
-  --     -- fps = 60,
-  --     -- background_colour = "NONE",
-  --     render = "compact",
-  --     stages = "static",
-  --   },
-  -- },
 }
