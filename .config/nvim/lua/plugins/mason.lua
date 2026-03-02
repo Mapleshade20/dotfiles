@@ -11,6 +11,8 @@ return {
       ensure_installed = {
         -- install language servers
         "lua-language-server",
+        "astro-language-server",
+        "svelte-language-server",
         -- "html-lsp",
         -- "css-lsp",
 
