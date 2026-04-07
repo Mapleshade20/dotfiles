@@ -79,12 +79,6 @@ return {
   },
 
   {
-    "karb94/neoscroll.nvim",
-    config = true,
-    opts = {},
-  },
-
-  {
     "gbprod/cutlass.nvim",
     event = "BufEnter",
     config = true,

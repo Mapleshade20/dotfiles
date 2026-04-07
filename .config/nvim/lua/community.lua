@@ -12,7 +12,6 @@ return {
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.typescript" },
-  -- { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.biome" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   { import = "astrocommunity.search.grug-far-nvim" },

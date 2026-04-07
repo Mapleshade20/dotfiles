@@ -252,7 +252,7 @@ return {
       "folke/snacks.nvim", -- for input provider snacks
       "echasnovski/mini.icons", -- for icons
       "zbirenbaum/copilot.lua", -- for providers='copilot'
-      { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
+      { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = "Avante" } end },
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",

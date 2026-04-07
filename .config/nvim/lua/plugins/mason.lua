@@ -13,15 +13,12 @@ return {
         "lua-language-server",
         "astro-language-server",
         "svelte-language-server",
-        -- "html-lsp",
-        -- "css-lsp",
 
         -- install formatters
         "stylua",
-        -- "prettier",
 
         -- install debuggers
-        "debugpy",
+        -- "debugpy",
 
         -- install any other package
         "tree-sitter-cli",
