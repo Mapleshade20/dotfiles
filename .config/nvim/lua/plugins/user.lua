@@ -79,14 +79,8 @@ return {
   },
 
   {
-    "karb94/neoscroll.nvim",
-    config = true,
-    opts = {},
-  },
-
-  {
     "gbprod/cutlass.nvim",
-    event = "BufEnter",
+    event = "BufReadPost",
     config = true,
     opts = {
       cut_key = "m",
@@ -95,7 +89,7 @@ return {
 
   {
     "kylechui/nvim-surround",
-    event = "BufEnter",
+    event = "BufReadPost",
     config = true,
   },
 

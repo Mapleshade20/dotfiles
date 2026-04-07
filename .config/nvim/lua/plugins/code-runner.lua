@@ -2,13 +2,27 @@ return {
   "CRAG666/code_runner.nvim",
   config = true,
   cmd = "RunCode",
+  opts = {
+    mode = "toggleterm",
+    focus = true,
+    startinsert = true,
+    filetype = {
+      python = "python3 -u",
+      typescript = "deno run",
+      go = { "cd $dir ;", "go mod tidy;", "go run ." },
+      cpp = { "g++ -std=c++14 -o /tmp/$fileNameWithoutExt $dir/$fileName &&", "/tmp/$fileNameWithoutExt" },
+      rust = { "cargo run$end" },
+    },
+  },
+  dependencies = {
+    { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n["<Leader>r"] = { desc = "Execute" } end },
+    { "AstroNvim/astroui", opts = { icons = { Execute = " " } } },
+  },
   keys = {
-
-    { "<Leader>r", "", desc = " Execute" },
     {
       "<Leader>rr",
       "<cmd>RunFile<cr>",
-      desc = "Run Current",
+      desc = "Run This",
     },
     {
       -- Modify this section to detect between Go and C++
@@ -20,11 +34,11 @@ return {
         -- Check if it's a Go file
         if file_ext == "go" then
           vim.cmd "!go mod tidy && go build ."
-        -- Check if it's a Rust file
+          -- Check if it's a Rust file
         elseif file_ext == "rs" then
           vim.cmd "!cargo build"
           print "Rust cargo built in debug mode"
-        -- Check if it's a C++ file
+          -- Check if it's a C++ file
         elseif file_ext == "cpp" then
           -- Compile and build the C++ file in debug mode
           vim.cmd "!cd $dir && g++ -std=c++14 -g -o $fileNameWithoutExt.debug.bin $fileName"
@@ -33,7 +47,7 @@ return {
           print "Unsupported file type for building"
         end
       end,
-      desc = "Build Current",
+      desc = "Build This",
     },
     {
       -- run when is rust and do cargo test
@@ -47,18 +61,6 @@ return {
         end
       end,
       desc = "Run Tests",
-    },
-  },
-  opts = {
-    mode = "toggleterm",
-    focus = true,
-    startinsert = true,
-    filetype = {
-      python = "python3 -u",
-      typescript = "deno run",
-      go = { "cd $dir ;", "go mod tidy;", "go run ." },
-      cpp = { "g++ -std=c++14 -o /tmp/$fileNameWithoutExt $dir/$fileName &&", "/tmp/$fileNameWithoutExt" },
-      rust = { "cargo run$end" },
     },
   },
 }
