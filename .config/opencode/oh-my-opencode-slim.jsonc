@@ -1,0 +1,55 @@
+{
+	"preset": "copilot",
+	"presets": {
+		"copilot": {
+			"orchestrator": {
+				"model": "github-copilot/claude-sonnet-4.6",
+				"variant": "medium",
+				"skills": ["*"],
+				"mcps": ["*"]
+			},
+			"oracle": {
+				"model": "github-copilot/gpt-5.4",
+				"variant": "high",
+				"skills": [],
+				"mcps": []
+			},
+			"librarian": {
+				"model": "github-copilot/claude-haiku-4.5",
+				"variant": "low",
+				"skills": [],
+				"mcps": ["websearch", "context7", "grep_app"]
+			},
+			"explorer": {
+				"model": "github-copilot/claude-haiku-4.5",
+				"variant": "low",
+				"skills": [],
+				"mcps": []
+			},
+			"designer": {
+				"model": "github-copilot/gemini-3.1-pro-preview",
+				"variant": "medium",
+				"skills": ["agent-browser"],
+				"mcps": []
+			},
+			"fixer": {
+				"model": "github-copilot/claude-sonnet-4.6",
+				"variant": "medium",
+				"skills": [],
+				"mcps": []
+			}
+		}
+	},
+	"council": {
+		"master": { "model": "github-copilot/gpt-5.4", "variant": "high" },
+		"default_preset": "default",
+		"presets": {
+			"default": {
+				"alpha": { "model": "github-copilot/gemini-3.1-pro-preview" },
+				"beta": { "model": "github-copilot/gpt-5.4", "variant": "medium" }
+			}
+		},
+		"master_timeout": 500000,
+		"councillors_timeout": 300000
+	}
+}
