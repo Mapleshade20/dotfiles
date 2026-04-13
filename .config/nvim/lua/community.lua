@@ -14,6 +14,7 @@ return {
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.biome" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
+  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   { import = "astrocommunity.search.grug-far-nvim" },
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
   -- { import = "astrocommunity.recipes.neovide" },
