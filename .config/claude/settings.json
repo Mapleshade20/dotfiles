@@ -1,0 +1,33 @@
+{
+	"env": {
+		"ANTHROPIC_BASE_URL": "http://localhost:4141",
+		"ANTHROPIC_AUTH_TOKEN": "dummy",
+		"ANTHROPIC_MODEL": "claude-sonnet-4.6",
+		"ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4.6",
+		"ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4.6",
+		"ANTHROPIC_DEFAULT_HAIKU_MODEL": "gpt-5-mini",
+		"ANTHROPIC_CUSTOM_MODEL_OPTION": "gpt-5.4-mini",
+		"DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
+		"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+		"BASH_MAX_TIMEOUT_MS": "300000",
+		"CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
+		"CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION": "false"
+	},
+	"permissions": {
+		"deny": ["WebSearch"]
+	},
+	"enabledPlugins": {
+		"rust-analyzer-lsp@claude-plugins-official": true,
+		"typescript-lsp@claude-plugins-official": true,
+		"frontend-design@claude-plugins-official": true
+	},
+	"extraKnownMarketplaces": {
+		"chrome-devtools-plugins": {
+			"source": {
+				"source": "github",
+				"repo": "ChromeDevTools/chrome-devtools-mcp"
+			}
+		}
+	},
+	"effortLevel": "medium"
+}
