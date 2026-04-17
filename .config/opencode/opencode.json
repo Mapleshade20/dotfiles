@@ -1,0 +1,33 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "@ljw1004/opencode-trace",
+    "oh-my-opencode-mal",
+    "@slkiser/opencode-quota",
+    "@cortexkit/opencode-magic-context@latest"
+  ],
+  "agent": {
+    "explore": {
+      "disable": true
+    },
+    "general": {
+      "disable": true
+    }
+  },
+  "experimental": {
+    "quotaToast": {
+      "enableToast": false,
+      "showSessionTokens": true,
+      "enabledProviders": [
+        "copilot",
+        "openai"
+      ],
+      "formatStyle": "grouped",
+      "percentDisplayMode": "used"
+    }
+  },
+  "compaction": {
+    "auto": false,
+    "prune": false
+  }
+}

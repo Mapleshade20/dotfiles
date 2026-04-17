@@ -1,0 +1,15 @@
+{
+	"$schema": "https://raw.githubusercontent.com/cortexkit/opencode-magic-context/master/assets/magic-context.schema.json",
+	"execute_threshold_tokens": {
+		"default": 75000
+	},
+	"historian": {
+		"model": "github-copilot/gpt-5.4-mini"
+	},
+	"dreamer": {
+		"enabled": false,
+		"user_memories": {
+			"enabled": false
+		}
+	}
+}
