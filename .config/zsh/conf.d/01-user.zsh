@@ -6,6 +6,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
+export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
+export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
 export YADM_ROOT="$HOME"
 export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
@@ -25,6 +27,15 @@ export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export ZSH="$ZDOTDIR/oh-my-zsh"
 export EDITOR="nvim"
 export FD="fd"
+
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export HISTFILE=${HISTFILE:-$ZDOTDIR/.zsh_history}
+if [[ -f $HOME/.zsh_history ]] && [[ ! -f $HISTFILE ]]; then
+    echo "Please manually move $HOME/.zsh_history to $HISTFILE"
+    echo "Or move it somewhere else to avoid conflicts"
+fi
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 typeset -U path PATH
 local extra_paths=(
