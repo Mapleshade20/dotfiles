@@ -1,9 +1,11 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_DATA_DIRS="$XDG_DATA_HOME:/usr/local/share:/usr/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
 export YADM_ROOT="$HOME"
 export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
