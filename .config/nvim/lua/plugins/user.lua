@@ -254,6 +254,10 @@ return {
           never_show = {
             ".DS_Store",
           },
+          never_show_by_pattern = {
+            "__pycache__",
+            "*.egg-info",
+          },
         },
         follow_current_file = {
           enabled = true,
