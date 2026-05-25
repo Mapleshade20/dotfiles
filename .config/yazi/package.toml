@@ -8,5 +8,10 @@ use = "yazi-rs/plugins:chmod"
 rev = "5d5c480"
 hash = "f0c8c378184d5f8abd1b095a443d336d"
 
+[[plugin.deps]]
+use = "pirafrank/what-size"
+rev = "179ebf6"
+hash = "57056b9728006881d580ccabe8154a9c"
+
 [flavor]
 deps = []

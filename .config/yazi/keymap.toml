@@ -27,3 +27,8 @@ desc = "Archive selected files (password+header+level)"
 on   = [ "c", "m" ]
 run  = "plugin chmod"
 desc = "Chmod on selected files"
+
+[[mgr.prepend_keymap]]
+on = [ "m", "S" ]
+run  = "plugin what-size"
+desc = "Calc size of selection or cwd" 
