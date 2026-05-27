@@ -29,7 +29,6 @@ source $ZSH/oh-my-zsh.sh
 # ------- BEGIN Common Configuration -------
 
 #  Aliases 
-alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 alias zshconfig="nvim ~/.config/zsh/.zshrc\#\#template"
 alias kittyconfig="nvim ~/.config/kitty/kitty.conf\#\#template"
 alias cd="z"               # zoxide
