@@ -1,0 +1,26 @@
+{
+  "packages": [
+    "npm:@agnishc/edb-ask-user",
+    "npm:@sherif-fanous/pi-catppuccin",
+    "npm:@howaboua/pi-codex-conversion",
+    "npm:@npm-ken/pi-bar",
+    "npm:@howaboua/pi-skill-chrome-cdp",
+    "npm:@narumitw/pi-btw",
+    "npm:@howaboua/pi-subagent-review",
+    "npm:@howaboua/pi-explore-subagents",
+    "npm:@howaboua/pi-codex-web-run"
+  ],
+  "defaultThinkingLevel": "high",
+  "theme": "catppuccin-macchiato",
+  "compaction": {
+    "enabled": true
+  },
+  "retry": {
+    "enabled": true
+  },
+  "showCacheMissNotices": true,
+  "hideThinkingBlock": true,
+  "tuiMode": "fullscreen",
+  "enabledModels": [
+  ]
+}

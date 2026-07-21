@@ -1,0 +1,216 @@
+# pi-bar configuration
+#
+# Colors accept:
+# - hex values, such as "#rrggbb"
+# - color names defined in [colors]
+
+[colors]
+text_fg = "#cdd6f4"
+model_bg = "#005b95"
+thinking_bg = "#005b95"
+cost_bg = "#6b3fa0"
+dir_bg = "#313244"
+git_bg = "#006b1d"
+git_staged_bg = "#005b95"
+git_unstaged_bg = "#a17a00"
+git_ahead_bg = "#6b3fa0"
+git_behind_bg = "#6b3fa0"
+lsp_bg = "#313244"
+activity_bg = "#313244"
+activity_fg = "#2dd4bf"
+ponytail_bg = "#006b1d"
+ok = "#006b1d"
+warn = "#a17a00"
+alert = "#972e2d"
+
+
+# Status bar layout is dynamic. Segments can be added, removed, or reordered.
+#
+# Segment types:
+# - "value": renders template, or empty_text, as colored text.
+# - "meter": evaluates a number, renders text, and applies matching states.
+# - "dir": renders the current working directory segment.
+# - "git": renders branch and remote service from native filesystem reads.
+# - "status": renders a keyed pi status only when present.
+# - "activity": renders tool or streaming activity with spinner settings.
+#
+# Status segments:
+# - key = "*" renders statuses not handled by another status segment.
+# - ignore = ["regex"] skips matching status text.
+#
+# Common segment keys:
+# - fg
+# - bg
+# - template
+# - empty_text
+# - show_if
+# - min_width
+#
+# Separators default to Powerline/Nerd Font glyphs.
+# For plain terminals, set leading/trailing as desired.
+#
+# Missing colors fall back to default bg/fg values.
+#
+# Template tokens:
+# - value: {value}, {model}, {short_model}, {thinking}
+# - dir: {value}, {dir}, {path}
+# - git: {remote_icon}, {branch_icon}, {branch}, {staged}, {unstaged}, {ahead}, {behind}, {service}, {service_icon}, {remote}
+# - meter: {value}, {percent}, {context_window}
+# - status: {value}, {text}, {key}, plus numbers parsed from status text
+# - activity: {source}, {spinner}, {tools}, {streaming}, {value}
+#
+[statusbar]
+
+# default separators require a mono nerd font for your terminal
+# see nerdfonts.com
+[statusbar.separators]
+leading = "\uE0BA"
+trailing = "\uE0BC"
+
+[[statusbar.segments]]
+type = "dir"
+template = "  {dir}"
+fg = "text_fg"
+bg = "dir_bg"
+collapse_order = 3
+collapsed_template = "  "
+
+[[statusbar.segments]]
+type = "value"
+template = " {model}"
+empty_text = "no model"
+fg = "text_fg"
+bg = "model_bg"
+collapse_order = 3
+collapsed_template = "  {short_model}"
+
+[[statusbar.segments]]
+type = "value"
+template = "{thinking}"
+show_if = "model?.reasoning"
+fg = "text_fg"
+bg = "thinking_bg"
+collapse_order = 2
+
+# Matches Pi's native footer format: $<session total> and (sub) for OAuth models.
+[[statusbar.segments]]
+type = "value"
+eval = "`$${ctx.sessionManager.getEntries().reduce((total, entry) => total + (entry.type === 'message' && entry.message.role === 'assistant' ? entry.message.usage.cost.total : 0), 0).toFixed(3)}${ctx.model && ctx.modelRegistry.isUsingOAuth(ctx.model) ? ' (sub)' : ''}`"
+show_if = "(ctx.model ? ctx.modelRegistry.isUsingOAuth(ctx.model) : false) || ctx.sessionManager.getEntries().some((entry) => entry.type === 'message' && entry.message.role === 'assistant' && entry.message.usage.cost.total > 0)"
+fg = "text_fg"
+bg = "cost_bg"
+collapse_order = 2
+
+# Meter states support gt, gte, lt, lte, fg, bg and are matched in order.
+[[statusbar.segments]]
+type = "meter"
+value_eval = "ctx.getContextUsage()?.percent ?? 0"
+# `value` remains the percentage for state colors; show raw tokens in the label.
+eval = "`${humanReadable(ctx.getContextUsage()?.tokens ?? 0)} / ${Math.round(value ?? 0)}%`"
+fg = "text_fg"
+states = [
+  { gte = 75, bg = "alert" },
+  { gte = 50, bg = "warn" },
+  { gte = 0, bg = "ok" },
+]
+collapse_order = 4
+collapsed_template = "{percent}%"
+
+[[statusbar.segments]]
+type = "git"
+template = "{remote_icon} {branch_icon} {branch}{counts}"
+count_style = "symbol"
+count_separator = " "
+fg = "text_fg"
+bg = "git_bg"
+icons = { remote = "", branch = "" }
+states = [
+  { id = "unstaged", bg = "git_unstaged_bg" },
+  { id = "staged", bg = "git_staged_bg" },
+  { id = "behind", bg = "git_behind_bg" },
+  { id = "ahead", bg = "git_ahead_bg" },
+]
+collapse_order = 3
+collapsed_template = " {branch} "
+
+[[statusbar.segments]]
+type = "status"
+key = "whatsapp"
+template = "  "
+fg = "text_fg"
+states = [
+  { name = "connected", match = "WhatsApp: Connected$", bg = "ok" },
+  { name = "disconnected", match = "WhatsApp: Disconnected$", bg = "alert" },
+  { name = "default", bg = "warn" },
+]
+collapse_order = 1
+
+[[statusbar.segments]]
+type = "status"
+key = "pi-lens-lsp"
+template = " 󰅩 "
+fg = "text_fg"
+states = [
+  { name = "errors", match = "^LSP [0-9]+ errors?$", template = "  {errors} ", bg = "alert" },
+  { name = "warnings", match = "^LSP [0-9]+ warnings?$", template = "  {warnings} ", bg = "warn" },
+  { name = "active", match = "^LSP Active", bg = "ok" },
+  { name = "inactive", match = "^LSP Inactive$", bg = "lsp_bg" },
+  { name = "default", bg = "warn" },
+]
+collapse_order = 2
+
+[[statusbar.segments]]
+type = "status"
+key = "headroom"
+eval = "` 󰣈 ${String(state.status.text).replace(/\\bHeadroom\\s*/, '').trim()} `"
+fg = "text_fg"
+states = [
+  { name = "connected", match = "✓", bg = "ok" },
+  { name = "default", bg = "alert" },
+]
+collapse_order = 2
+
+[[statusbar.segments]]
+type = "status"
+key = "mcp"
+template = " 󰛳 {servers} "
+fg = "text_fg"
+states = [
+  { name = "all_connected", match = "^MCP:\\s*(\\d+)\\/\\1\\s+servers?", bg = "ok" },
+  { name = "none_connected", match = "^MCP:\\s*0\\/\\d+\\s+servers?", bg = "alert" },
+  { name = "partial_connected", match = "^MCP:\\s*\\d+\\/\\d+\\s+servers?", bg = "warn" },
+  { name = "connecting", match = "^MCP:\\s*connecting", template = " 󰛳 MCP … ", bg = "warn" },
+  { name = "default", template = " 󰛳 MCP ", bg = "warn" },
+]
+collapse_order = 2
+
+[[statusbar.segments]]
+type = "status"
+key = "ponytail"
+eval = "` 🐴 ${(String(state.status.text).match(/\\b(lite|full|ultra|off)\\b/i)?.[1] ?? '').toLowerCase()} `"
+fg = "text_fg"
+states = [{ name = "default", bg = "ponytail_bg" }]
+collapse_order = 1
+
+# catch all for unspecified status keys
+[[statusbar.segments]]
+type = "status"
+key = "*"
+template = " {text} "
+fg = "text_fg"
+ignore = ["^Codex adapter\\b"]
+states = [{ name = "default", bg = "warn" }]
+collapse_order = 1
+
+[[statusbar.segments]]
+type = "activity"
+fg = "activity_fg"
+bg = "activity_bg"
+min_width = 11
+min_duration_ms = 1000
+sources = ["tools", "streaming"]
+template = "{spinner} {value}"
+values = { streaming = "working" }
+spinner = { frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"], interval_ms = 100 }
+collapse_order = 5
+collapsed_template = "{spinner}"
