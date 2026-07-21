@@ -1,0 +1,22 @@
+{
+  "packages": [
+    "npm:@juicesharp/rpiv-todo",
+    "npm:@agnishc/edb-ask-user",
+    "npm:@latentminds/pi-quotas",
+    "npm:@sherif-fanous/pi-catppuccin",
+    "npm:@howaboua/pi-codex-conversion",
+    "npm:@npm-ken/pi-bar",
+    "npm:@howaboua/pi-skill-chrome-cdp",
+    "npm:@narumitw/pi-btw",
+    "npm:@howaboua/pi-subagent-review"
+  ],
+  "defaultThinkingLevel": "high",
+  "theme": "catppuccin-macchiato",
+  "compaction": {
+    "enabled": true
+  },
+  "retry": {
+    "enabled": true
+  },
+  "showCacheMissNotices": true
+}
