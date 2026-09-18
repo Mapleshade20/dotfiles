@@ -4,8 +4,8 @@ export XDG_DATA_DIRS="$XDG_DATA_HOME:/usr/local/share:/usr/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 alias python="python3"
+export VIMINIT='let $MYVIMRC="$HOME/.config/vim/vimrc" | source $MYVIMRC'
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"

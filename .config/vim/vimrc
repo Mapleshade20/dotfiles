@@ -1,0 +1,11 @@
+" keep Vim's stock defaults (they stop loading once you have your own vimrc)
+source $VIMRUNTIME/defaults.vim
+
+" look for plugins etc. in ~/.config/vim instead of ~/.vim
+set runtimepath^=~/.config/vim
+set runtimepath+=~/.config/vim/after
+set packpath^=~/.config/vim
+set packpath+=~/.config/vim/after
+
+" state files out of $HOME
+set viminfofile=~/.local/state/vim/viminfo
