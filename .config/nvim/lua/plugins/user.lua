@@ -272,4 +272,25 @@ return {
       enable_update_available_warning = false,
     },
   },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        objc = { "clang-format" },
+        objcpp = { "clang-format" },
+        cuda = { "clang-format" },
+      },
+
+      formatters = {
+        ["clang-format"] = {
+          prepend_args = {
+            "--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: Never}",
+          },
+        },
+      },
+    },
+  },
 }

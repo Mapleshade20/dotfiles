@@ -17,5 +17,6 @@ return {
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   { import = "astrocommunity.search.grug-far-nvim" },
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
+  { import = "astrocommunity.editing-support.conform-nvim" },
   -- { import = "astrocommunity.recipes.neovide" },
 }

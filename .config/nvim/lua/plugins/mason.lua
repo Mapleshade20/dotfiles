@@ -16,6 +16,7 @@ return {
 
         -- install formatters
         "stylua",
+        "clang-format",
 
         -- install debuggers
         -- "debugpy",
