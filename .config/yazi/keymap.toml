@@ -29,6 +29,6 @@ run  = "plugin chmod"
 desc = "Chmod on selected files"
 
 [[mgr.prepend_keymap]]
-on = [ "m", "S" ]
-run  = "plugin what-size"
-desc = "Calc size of selection or cwd" 
+on   = "<C-p>" # Or use "<Space>" if you don't use it for selection
+run  = 'shell -- qlmanage -p %s >/dev/null 2>&1'
+desc = "Preview with macOS Quick Look"
